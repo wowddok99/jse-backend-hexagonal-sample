@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/demo
+    username: root
+    password: root
+
+    # connection pool (usage: hikari pool)
+    hikari:
+      connection-timeout: 30_000
+      idle-timeout: 60_000
+      max-lifetime: 1_800_000
+      maximum-pool-size: 300
+      minimum-idle: 5
+      leak-detection-threshold: 2000
+
+  jpa:
+    properties:
+      hibernate:
+        format-sql: true
+        highlight_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create
