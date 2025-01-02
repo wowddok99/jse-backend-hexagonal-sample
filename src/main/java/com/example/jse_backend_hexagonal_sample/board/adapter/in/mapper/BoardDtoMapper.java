@@ -12,5 +12,5 @@ import java.time.Instant;
 public interface BoardDtoMapper {
     BoardDto toDto(Board board);
 
-    Board toDomain(BoardCreateCommand command);
+    Board toDomain(BoardCreateCommand command, Instant createdAt, Instant updatedAt);
 }

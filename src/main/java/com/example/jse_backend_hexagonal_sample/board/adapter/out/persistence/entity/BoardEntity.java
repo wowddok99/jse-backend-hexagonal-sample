@@ -23,8 +23,7 @@ public class BoardEntity extends BaseTimeEntity {
     @Column(name = "title", length = 20, nullable = false)
     private String title;
 
-    @Lob
-    @Column(name = "content", columnDefinition = "TEXT", nullable = false)
+    @Column(name = "content", length = 300, nullable = false)
     private String content;
 
     @Column(name = "created_at")

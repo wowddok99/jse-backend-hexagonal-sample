@@ -6,8 +6,6 @@ import java.time.Instant;
 
 public record BoardCreateCommand(
         @NotNull String title,
-        @NotNull String content,
-        Instant createdAt,
-        Instant updatedAt
+        @NotNull String content
 ) {
 }

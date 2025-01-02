@@ -24,7 +24,7 @@ public class BoardCommandController {
     @PostMapping
     public ResponseEntity<BoardDto> create(@RequestBody @Valid BoardCreateCommand command) {
 
-        var board = boardCreateUseCase.createBoard(boardDtoMapper.toDomain(command));
+        var board = boardCreateUseCase.createBoard(boardDtoMapper.toDomain(command, Instant.now(), Instant.now()));
 
         return ResponseEntity.ok(boardDtoMapper.toDto(board));
     }
