@@ -1,12 +1,11 @@
 package com.example.jse_backend_hexagonal_sample.board.adapter.out.persistence.entity;
 
-import com.example.jse_backend_hexagonal_sample.common.BaseTimeEntity;
+import com.example.jse_backend_hexagonal_sample.common.support.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.Instant;
-import java.util.Objects;
 
 @Getter
 @Builder(toBuilder = true)

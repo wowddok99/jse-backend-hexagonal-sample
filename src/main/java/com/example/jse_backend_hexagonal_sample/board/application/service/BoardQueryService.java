@@ -1,6 +1,7 @@
 package com.example.jse_backend_hexagonal_sample.board.application.service;
 
 import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
+import com.example.jse_backend_hexagonal_sample.board.application.exception.BoardQueryErrorCode;
 import com.example.jse_backend_hexagonal_sample.board.application.port.BoardQueryPort;
 import com.example.jse_backend_hexagonal_sample.board.application.usecase.BoardReadUseCase;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,6 @@ public class BoardQueryService implements BoardReadUseCase {
     @Transactional(readOnly = true)
     public Board getBoard(Long id) {
         return boardQueryPort.findBoardById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Board not Fount"));
+                .orElseThrow(BoardQueryErrorCode.BOARD_NOT_FOUND::defaultException);
     }
 }

@@ -19,9 +19,7 @@ public class BoardQueryAdapter implements BoardQueryPort {
 
     @Override
     public Optional<Board> findBoardById(Long id) {
-        return boardEntityMapper.toOptionalDomain(
-                boardJpaRepository.findById(id)
-                        .orElseThrow(() -> new IllegalArgumentException("Board not Found"))
-        );
+        return boardJpaRepository.findById(id)
+                .map(boardEntityMapper::toDomain);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.jse_backend_hexagonal_sample.common;
+package com.example.jse_backend_hexagonal_sample.common.support;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
