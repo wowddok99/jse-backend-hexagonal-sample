@@ -13,4 +13,8 @@ public interface BoardEntityMapper {
     Board toDomain(BoardEntity boardEntity);
 
     BoardEntity toEntity(Board board);
+
+    default Optional<Board> toOptionalDomain(BoardEntity boardEntity) {
+        return Optional.ofNullable(toDomain(boardEntity));
+    }
 }
