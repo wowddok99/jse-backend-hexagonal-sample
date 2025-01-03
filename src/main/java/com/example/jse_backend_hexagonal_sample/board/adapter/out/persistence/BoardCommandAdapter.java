@@ -22,4 +22,18 @@ public class BoardCommandAdapter implements BoardCommandPort {
 
         return boardEntityMapper.toDomain(boardJpaRepository.save(boardEntity));
     }
+
+    @Override
+    public Board updateBoard(Long id, Board board) {
+        var existBoard = boardJpaRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Board not Found"));
+
+        var updateBoard = existBoard.toBuilder()
+                .title(board.getTitle())
+                .content(board.getContent())
+                .updatedAt(Instant.now())
+                .build();
+
+        return boardEntityMapper.toDomain(boardJpaRepository.save(updateBoard));
+    }
 }

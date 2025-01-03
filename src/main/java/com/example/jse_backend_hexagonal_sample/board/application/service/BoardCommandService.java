@@ -3,6 +3,7 @@ package com.example.jse_backend_hexagonal_sample.board.application.service;
 import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
 import com.example.jse_backend_hexagonal_sample.board.application.port.BoardCommandPort;
 import com.example.jse_backend_hexagonal_sample.board.application.usecase.BoardCreateUseCase;
+import com.example.jse_backend_hexagonal_sample.board.application.usecase.BoardUpdateUseCase;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 // 비즈니스 로직을 처리하는 서비스 클래스
 @Service
 @RequiredArgsConstructor
-public class BoardCommandService implements BoardCreateUseCase {
+public class BoardCommandService implements BoardCreateUseCase, BoardUpdateUseCase {
 
     private final BoardCommandPort boardCommandPort;
 
@@ -18,5 +19,11 @@ public class BoardCommandService implements BoardCreateUseCase {
     @Transactional
     public Board createBoard(Board board) {
         return boardCommandPort.createBoard(board);
+    }
+
+    @Override
+    @Transactional
+    public Board updateBoard(Long id, Board board) {
+        return boardCommandPort.updateBoard(id, board);
     }
 }

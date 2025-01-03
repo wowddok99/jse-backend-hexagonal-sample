@@ -2,6 +2,7 @@ package com.example.jse_backend_hexagonal_sample.board.adapter.in.mapper;
 
 import com.example.jse_backend_hexagonal_sample.board.adapter.in.web.dto.BoardCreateCommand;
 import com.example.jse_backend_hexagonal_sample.board.adapter.in.web.dto.BoardDto;
+import com.example.jse_backend_hexagonal_sample.board.adapter.in.web.dto.BoardUpdateCommand;
 import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
 import org.mapstruct.Mapper;
 
@@ -13,4 +14,7 @@ public interface BoardDtoMapper {
     BoardDto toDto(Board board);
 
     Board toDomain(BoardCreateCommand command, Instant createdAt, Instant updatedAt);
+
+    Board toDomain(BoardUpdateCommand command);
+
 }

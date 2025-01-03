@@ -6,9 +6,10 @@ import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.Instant;
+import java.util.Objects;
 
 @Getter
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @DynamicUpdate
