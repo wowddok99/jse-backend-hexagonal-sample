@@ -33,8 +33,11 @@ public class BoardEntity extends BaseTimeEntity {
     @Column(name = "updated_at")
     private Instant updatedAt;
 
+    @Column(name = "deleted_at")
+    private Instant deletedAt;
+
     // 삭제
     public void softDelete() {
-        this.updatedAt = Instant.now();
+        this.deletedAt = Instant.now();
     }
 }

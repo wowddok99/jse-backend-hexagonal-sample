@@ -36,4 +36,13 @@ public class BoardCommandAdapter implements BoardCommandPort {
 
         return boardEntityMapper.toDomain(boardJpaRepository.save(updateBoard));
     }
+
+    @Override
+    public void deleteBoard(Long id) {
+        var existBoard = boardJpaRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Board not Found"));
+
+        // deletedAt 생성
+        existBoard.softDelete();
+    }
 }

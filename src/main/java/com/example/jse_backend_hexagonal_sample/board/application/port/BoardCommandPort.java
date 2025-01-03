@@ -6,4 +6,5 @@ import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
 public interface BoardCommandPort {
     Board createBoard(Board board);
     Board updateBoard(Long id, Board board);
+    void deleteBoard(Long id);
 }
