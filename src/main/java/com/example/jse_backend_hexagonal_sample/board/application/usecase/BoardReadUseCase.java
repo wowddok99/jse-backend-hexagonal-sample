@@ -6,6 +6,6 @@ import org.springframework.data.domain.Page;
 
 public interface BoardReadUseCase {
     Board getBoard (Long id);
-    Page<Board> getBoardList(int pageNumber, int size);
-    Page<Board> getBoardListByStatus(BoardStatus status, int pageNumber, int size);;
+    Page<Board> getBoards(int pageNumber, int size);
+    Page<Board> getBoardsByStatus(BoardStatus status, int pageNumber, int size);;
 }
