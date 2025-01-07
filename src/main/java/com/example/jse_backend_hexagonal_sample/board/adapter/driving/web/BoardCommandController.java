@@ -4,6 +4,7 @@ import com.example.jse_backend_hexagonal_sample.board.adapter.driving.mapper.Boa
 import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardCreateCommand;
 import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardDto;
 import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardUpdateCommand;
+import com.example.jse_backend_hexagonal_sample.board.application.domain.type.BoardStatus;
 import com.example.jse_backend_hexagonal_sample.board.application.usecase.BoardCreateUseCase;
 import com.example.jse_backend_hexagonal_sample.board.application.usecase.BoardDeleteUseCase;
 import com.example.jse_backend_hexagonal_sample.board.application.usecase.BoardUpdateUseCase;
@@ -31,7 +32,7 @@ public class BoardCommandController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<BoardDto> create(@RequestBody @Valid BoardCreateCommand command) {
 
-        var board = boardCreateUseCase.createBoard(boardDtoMapper.toDomain(command, Instant.now(), Instant.now()));
+        var board = boardCreateUseCase.createBoard(boardDtoMapper.toDomain(command, BoardStatus.ACTIVE, Instant.now(), Instant.now()));
 
         return ResponseEntity.ok(boardDtoMapper.toDto(board));
     }

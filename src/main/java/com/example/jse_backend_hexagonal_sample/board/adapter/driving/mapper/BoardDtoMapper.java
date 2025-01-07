@@ -4,6 +4,7 @@ import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.Bo
 import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardDto;
 import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardUpdateCommand;
 import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
+import com.example.jse_backend_hexagonal_sample.board.application.domain.type.BoardStatus;
 import org.mapstruct.Mapper;
 
 import java.time.Instant;
@@ -13,7 +14,7 @@ import java.time.Instant;
 public interface BoardDtoMapper {
     BoardDto toDto(Board board);
 
-    Board toDomain(BoardCreateCommand command, Instant createdAt, Instant updatedAt);
+    Board toDomain(BoardCreateCommand command, BoardStatus status, Instant createdAt, Instant updatedAt);
 
     Board toDomain(BoardUpdateCommand command);
 

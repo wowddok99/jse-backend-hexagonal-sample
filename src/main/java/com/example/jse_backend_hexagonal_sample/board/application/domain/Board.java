@@ -1,5 +1,6 @@
 package com.example.jse_backend_hexagonal_sample.board.application.domain;
 
+import com.example.jse_backend_hexagonal_sample.board.application.domain.type.BoardStatus;
 import lombok.*;
 
 import java.time.Instant;
@@ -17,6 +18,8 @@ public class Board {
     private String title;
 
     private String content;
+
+    private BoardStatus status;
 
     private Instant createdAt;
 

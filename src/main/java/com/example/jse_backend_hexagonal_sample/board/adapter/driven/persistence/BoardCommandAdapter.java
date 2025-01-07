@@ -41,7 +41,7 @@ public class BoardCommandAdapter implements BoardCommandPort {
         var existBoard = boardJpaRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Board not Found"));
 
-        // deletedAt 생성
+        // deletedAt 및 BoardStatus(REMOVED) 생성
         existBoard.softDelete();
     }
 }

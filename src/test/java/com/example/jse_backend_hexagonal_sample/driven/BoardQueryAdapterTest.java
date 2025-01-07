@@ -5,6 +5,7 @@ import com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence
 import com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence.BoardQueryAdapter;
 import com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence.entity.BoardEntity;
 import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
+import com.example.jse_backend_hexagonal_sample.board.application.domain.type.BoardStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -37,6 +38,7 @@ public class BoardQueryAdapterTest {
                 .id(1L)
                 .title("제목")
                 .content("내용")
+                .status(BoardStatus.ACTIVE)
                 .createdAt(Instant.now())
                 .updatedAt(Instant.now())
                 .build();
@@ -45,6 +47,7 @@ public class BoardQueryAdapterTest {
                 .id(1L)
                 .title("제목")
                 .content("내용")
+                .status(BoardStatus.ACTIVE)
                 .createdAt(Instant.now())
                 .updatedAt(Instant.now())
                 .build();

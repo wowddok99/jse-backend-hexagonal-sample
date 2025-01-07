@@ -1,5 +1,6 @@
 package com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence.entity;
 
+import com.example.jse_backend_hexagonal_sample.board.application.domain.type.BoardStatus;
 import com.example.jse_backend_hexagonal_sample.common.support.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,7 +15,6 @@ import java.time.Instant;
 @DynamicUpdate
 @Entity(name = "board")
 public class BoardEntity extends BaseTimeEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -25,6 +25,10 @@ public class BoardEntity extends BaseTimeEntity {
 
     @Column(name = "content", length = 300, nullable = false)
     private String content;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private BoardStatus status;
 
     @Column(name = "created_at")
     private Instant createdAt;
@@ -38,5 +42,6 @@ public class BoardEntity extends BaseTimeEntity {
     // 삭제
     public void softDelete() {
         this.deletedAt = Instant.now();
+        this.status = BoardStatus.REMOVED;
     }
 }
