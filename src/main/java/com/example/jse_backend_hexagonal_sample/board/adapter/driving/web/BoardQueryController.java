@@ -34,6 +34,18 @@ public class BoardQueryController {
         return ResponseEntity.ok(boardDtoMapper.toDto(board));
     }
 
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Page<BoardDto>> getBoardList(
+            @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
+            @RequestParam(name = "size", defaultValue = "10") int size
+    ) {
+        var boardList = boardReadUseCase.getBoardList(pageNumber, size).stream()
+                .map(boardDtoMapper::toDto).toList();
+
+        return ResponseEntity.ok(new PageImpl<>(boardList));
+    }
+
     @GetMapping("/status/{status}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Page<BoardDto>> getBoardListByStatus(
