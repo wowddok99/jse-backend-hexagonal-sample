@@ -2,9 +2,12 @@ package com.example.jse_backend_hexagonal_sample.board.adapter.driving.web;
 
 import com.example.jse_backend_hexagonal_sample.board.adapter.driving.mapper.BoardDtoMapper;
 import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardDto;
+import com.example.jse_backend_hexagonal_sample.board.application.domain.type.BoardStatus;
 import com.example.jse_backend_hexagonal_sample.board.application.usecase.BoardReadUseCase;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -29,5 +32,19 @@ public class BoardQueryController {
         var board = boardReadUseCase.getBoard(id);
 
         return ResponseEntity.ok(boardDtoMapper.toDto(board));
+    }
+
+    @GetMapping("/status/{status}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Page<BoardDto>> getBoardByStatus(
+            @PathVariable("status")
+            BoardStatus status,
+            @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
+            @RequestParam(name = "size", defaultValue = "10") int size
+    ) {
+        var boardList = boardReadUseCase.getBoardByStatus(status, pageNumber, size).stream()
+                .map(boardDtoMapper::toDto).toList();
+
+        return ResponseEntity.ok(new PageImpl<>(boardList));
     }
 }

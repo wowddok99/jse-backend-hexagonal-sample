@@ -8,5 +8,4 @@ public record BoardDto(
         String content,
         Instant createdAt,
         Instant updatedAt
-) {
-}
+) {}

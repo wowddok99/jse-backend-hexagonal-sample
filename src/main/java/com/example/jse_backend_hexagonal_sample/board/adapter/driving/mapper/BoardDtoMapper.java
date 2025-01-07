@@ -6,6 +6,7 @@ import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.Bo
 import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
 import com.example.jse_backend_hexagonal_sample.board.application.domain.type.BoardStatus;
 import org.mapstruct.Mapper;
+import org.springframework.data.domain.Page;
 
 import java.time.Instant;
 
