@@ -33,4 +33,10 @@ public class BoardQueryService implements BoardReadUseCase {
     public Page<Board> getBoardsByStatus(BoardStatus status, int pageNumber, int size) {
         return boardQueryPort.findBoardsByStatus(status, pageNumber, size);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Board> getActiveAndSuspendedBoards(int pageNumber, int size) {
+        return boardQueryPort.findActiveAndSuspendedBoards(pageNumber, size);
+    }
 }

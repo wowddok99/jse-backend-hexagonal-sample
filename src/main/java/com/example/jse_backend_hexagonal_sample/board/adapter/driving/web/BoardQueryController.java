@@ -40,10 +40,10 @@ public class BoardQueryController {
             @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size", defaultValue = "10") int size
     ) {
-        var boardList = boardReadUseCase.getBoards(pageNumber, size).stream()
+        var boards = boardReadUseCase.getBoards(pageNumber, size).stream()
                 .map(boardDtoMapper::toDto).toList();
 
-        return ResponseEntity.ok(new PageImpl<>(boardList));
+        return ResponseEntity.ok(new PageImpl<>(boards));
     }
 
     @GetMapping("/status/{status}")
@@ -54,9 +54,21 @@ public class BoardQueryController {
             @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size", defaultValue = "10") int size
     ) {
-        var boardList = boardReadUseCase.getBoardsByStatus(status, pageNumber, size).stream()
+        var boards = boardReadUseCase.getBoardsByStatus(status, pageNumber, size).stream()
                 .map(boardDtoMapper::toDto).toList();
 
-        return ResponseEntity.ok(new PageImpl<>(boardList));
+        return ResponseEntity.ok(new PageImpl<>(boards));
+    }
+
+    @GetMapping("/status/active-suspended")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Page<BoardDto>> getActiveAndSuspendedBoards(
+            @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
+            @RequestParam(name = "size", defaultValue = "10") int size
+    ) {
+        var boards = boardReadUseCase.getActiveAndSuspendedBoards(pageNumber, size).stream()
+                .map(boardDtoMapper::toDto).toList();
+
+        return ResponseEntity.ok(new PageImpl<>(boards));
     }
 }

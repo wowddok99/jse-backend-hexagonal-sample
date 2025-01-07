@@ -10,5 +10,6 @@ public interface BoardQueryPort {
     Optional<Board> findBoardById(Long id);
     Page<Board> findBoars(int pageNumber, int size);
     Page<Board> findBoardsByStatus(BoardStatus status, int pageNumber, int size);
+    Page<Board> findActiveAndSuspendedBoards(int pageNumber, int size);
 
 }

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Repository
 @RequiredArgsConstructor
@@ -45,7 +46,22 @@ public class BoardQueryAdapter implements BoardQueryPort {
         // 페이지 번호와 페이지 크기를 사용하여 PageRequest 객체를 생성합니다.
         PageRequest pageRequest = PageRequest.of(pageNumber, size, sort);
 
-        return boardJpaRepository.findBoardByStatus(status, pageRequest)
+        return boardJpaRepository.findByStatus(status, pageRequest)
+                .map(boardEntityMapper::toDomain);
+    }
+
+    @Override
+    public Page<Board> findActiveAndSuspendedBoards(int pageNumber, int size) {
+        // ACTIVE, SUSPENDED
+        Set<BoardStatus> statuses = BoardStatus.getGeneralQueryStatus();
+
+        // Sort 객체를 생성하여 정렬 기준을 설정합니다.
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
+
+        // 페이지 번호와 페이지 크기를 사용하여 PageRequest 객체를 생성합니다.
+        PageRequest pageRequest = PageRequest.of(pageNumber, size, sort);
+
+        return boardJpaRepository.findByStatusIn(statuses, pageRequest)
                 .map(boardEntityMapper::toDomain);
     }
 }
