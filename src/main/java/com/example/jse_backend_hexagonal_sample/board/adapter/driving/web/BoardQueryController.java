@@ -1,7 +1,7 @@
-package com.example.jse_backend_hexagonal_sample.board.adapter.in.web;
+package com.example.jse_backend_hexagonal_sample.board.adapter.driving.web;
 
-import com.example.jse_backend_hexagonal_sample.board.adapter.in.mapper.BoardDtoMapper;
-import com.example.jse_backend_hexagonal_sample.board.adapter.in.web.dto.BoardDto;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driving.mapper.BoardDtoMapper;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardDto;
 import com.example.jse_backend_hexagonal_sample.board.application.usecase.BoardReadUseCase;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;

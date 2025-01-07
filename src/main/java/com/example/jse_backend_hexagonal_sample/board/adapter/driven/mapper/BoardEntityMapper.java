@@ -1,10 +1,9 @@
-package com.example.jse_backend_hexagonal_sample.board.adapter.out.mapper;
+package com.example.jse_backend_hexagonal_sample.board.adapter.driven.mapper;
 
-import com.example.jse_backend_hexagonal_sample.board.adapter.out.persistence.entity.BoardEntity;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence.entity.BoardEntity;
 import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
 import org.mapstruct.Mapper;
 
-import java.time.Instant;
 import java.util.Optional;
 
 // Entity <-> Domain 매핑 클래스

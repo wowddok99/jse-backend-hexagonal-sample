@@ -1,4 +1,4 @@
-package com.example.jse_backend_hexagonal_sample.board.adapter.out.persistence.entity;
+package com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence.entity;
 
 import com.example.jse_backend_hexagonal_sample.common.support.BaseTimeEntity;
 import jakarta.persistence.*;

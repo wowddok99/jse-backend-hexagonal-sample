@@ -1,8 +1,8 @@
-package com.example.jse_backend_hexagonal_sample.board.adapter.in.mapper;
+package com.example.jse_backend_hexagonal_sample.board.adapter.driving.mapper;
 
-import com.example.jse_backend_hexagonal_sample.board.adapter.in.web.dto.BoardCreateCommand;
-import com.example.jse_backend_hexagonal_sample.board.adapter.in.web.dto.BoardDto;
-import com.example.jse_backend_hexagonal_sample.board.adapter.in.web.dto.BoardUpdateCommand;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardCreateCommand;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardDto;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardUpdateCommand;
 import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
 import org.mapstruct.Mapper;
 

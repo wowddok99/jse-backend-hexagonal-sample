@@ -1,7 +1,6 @@
-package com.example.jse_backend_hexagonal_sample.board.adapter.out.persistence;
+package com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence;
 
-import com.example.jse_backend_hexagonal_sample.board.adapter.out.mapper.BoardEntityMapper;
-import com.example.jse_backend_hexagonal_sample.board.adapter.out.persistence.entity.BoardEntity;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driven.mapper.BoardEntityMapper;
 import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
 import com.example.jse_backend_hexagonal_sample.board.application.port.BoardCommandPort;
 import lombok.RequiredArgsConstructor;

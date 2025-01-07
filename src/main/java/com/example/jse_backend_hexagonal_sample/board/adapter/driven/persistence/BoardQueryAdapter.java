@@ -1,13 +1,11 @@
-package com.example.jse_backend_hexagonal_sample.board.adapter.out.persistence;
+package com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence;
 
-import com.example.jse_backend_hexagonal_sample.board.adapter.out.mapper.BoardEntityMapper;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driven.mapper.BoardEntityMapper;
 import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
-import com.example.jse_backend_hexagonal_sample.board.application.port.BoardCommandPort;
 import com.example.jse_backend_hexagonal_sample.board.application.port.BoardQueryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.time.Instant;
 import java.util.Optional;
 
 @Repository

@@ -1,9 +1,9 @@
-package com.example.jse_backend_hexagonal_sample.board.adapter.in.web;
+package com.example.jse_backend_hexagonal_sample.board.adapter.driving.web;
 
-import com.example.jse_backend_hexagonal_sample.board.adapter.in.mapper.BoardDtoMapper;
-import com.example.jse_backend_hexagonal_sample.board.adapter.in.web.dto.BoardCreateCommand;
-import com.example.jse_backend_hexagonal_sample.board.adapter.in.web.dto.BoardDto;
-import com.example.jse_backend_hexagonal_sample.board.adapter.in.web.dto.BoardUpdateCommand;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driving.mapper.BoardDtoMapper;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardCreateCommand;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardDto;
+import com.example.jse_backend_hexagonal_sample.board.adapter.driving.web.dto.BoardUpdateCommand;
 import com.example.jse_backend_hexagonal_sample.board.application.usecase.BoardCreateUseCase;
 import com.example.jse_backend_hexagonal_sample.board.application.usecase.BoardDeleteUseCase;
 import com.example.jse_backend_hexagonal_sample.board.application.usecase.BoardUpdateUseCase;
