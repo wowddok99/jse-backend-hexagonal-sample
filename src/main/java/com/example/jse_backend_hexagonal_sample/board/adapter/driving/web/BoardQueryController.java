@@ -36,13 +36,13 @@ public class BoardQueryController {
 
     @GetMapping("/status/{status}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Page<BoardDto>> getBoardByStatus(
+    public ResponseEntity<Page<BoardDto>> getBoardListByStatus(
             @PathVariable("status")
             BoardStatus status,
             @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
             @RequestParam(name = "size", defaultValue = "10") int size
     ) {
-        var boardList = boardReadUseCase.getBoardByStatus(status, pageNumber, size).stream()
+        var boardList = boardReadUseCase.getBoardListByStatus(status, pageNumber, size).stream()
                 .map(boardDtoMapper::toDto).toList();
 
         return ResponseEntity.ok(new PageImpl<>(boardList));

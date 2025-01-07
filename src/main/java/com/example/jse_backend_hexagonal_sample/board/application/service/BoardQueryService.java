@@ -24,7 +24,7 @@ public class BoardQueryService implements BoardReadUseCase {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Board> getBoardByStatus(BoardStatus status, int pageNumber, int size) {
-        return boardQueryPort.findBoardByStatus(status, pageNumber, size);
+    public Page<Board> getBoardListByStatus(BoardStatus status, int pageNumber, int size) {
+        return boardQueryPort.findBoardListByStatus(status, pageNumber, size);
     }
 }

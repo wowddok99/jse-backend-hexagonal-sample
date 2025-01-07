@@ -26,7 +26,7 @@ public class BoardQueryAdapter implements BoardQueryPort {
     }
 
     @Override
-    public Page<Board> findBoardByStatus(BoardStatus status, int pageNumber, int size) {
+    public Page<Board> findBoardListByStatus(BoardStatus status, int pageNumber, int size) {
         // Sort 객체를 생성하여 정렬 기준을 설정합니다.
         Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
 

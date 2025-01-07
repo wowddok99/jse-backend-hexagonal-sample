@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface BoardQueryPort {
     Optional<Board> findBoardById(Long id);
-    Page<Board> findBoardByStatus(BoardStatus status, int pageNumber, int size);
+    Page<Board> findBoardListByStatus(BoardStatus status, int pageNumber, int size);
 
 }
