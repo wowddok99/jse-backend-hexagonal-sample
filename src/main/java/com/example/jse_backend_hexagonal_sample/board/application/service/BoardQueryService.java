@@ -25,7 +25,7 @@ public class BoardQueryService implements BoardReadUseCase {
     @Override
     @Transactional(readOnly = true)
     public Page<Board> getBoards(int pageNumber, int size) {
-        return boardQueryPort.findBoars(pageNumber, size);
+        return boardQueryPort.findBoards(pageNumber, size);
     }
 
     @Override
