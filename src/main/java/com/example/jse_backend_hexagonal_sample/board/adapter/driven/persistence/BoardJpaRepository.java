@@ -11,5 +11,5 @@ import java.util.Set;
 
 public interface BoardJpaRepository extends JpaRepository<BoardEntity, Long> {
     Page<BoardEntity> findByStatusIn(Set<BoardStatus> statuses, Pageable pageable);
-    Page<BoardEntity> findByStatus(BoardStatus status, PageRequest pageRequest);
+    Page<BoardEntity> findByStatus(BoardStatus status, Pageable pageable);
 }

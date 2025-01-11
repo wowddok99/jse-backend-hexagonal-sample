@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -36,11 +37,8 @@ public class BoardQueryController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Page<BoardDto>> getBoards(
-            @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
-            @RequestParam(name = "size", defaultValue = "10") int size
-    ) {
-        var boards = boardReadUseCase.getBoards(pageNumber, size).stream()
+    public ResponseEntity<Page<BoardDto>> getBoards(Pageable pageable) {
+        var boards = boardReadUseCase.getBoards(pageable).stream()
                 .map(boardDtoMapper::toDto).toList();
 
         return ResponseEntity.ok(new PageImpl<>(boards));
@@ -51,10 +49,9 @@ public class BoardQueryController {
     public ResponseEntity<Page<BoardDto>> getBoardsByStatus(
             @PathVariable("status")
             BoardStatus status,
-            @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
-            @RequestParam(name = "size", defaultValue = "10") int size
+            Pageable pageable
     ) {
-        var boards = boardReadUseCase.getBoardsByStatus(status, pageNumber, size).stream()
+        var boards = boardReadUseCase.getBoardsByStatus(status, pageable).stream()
                 .map(boardDtoMapper::toDto).toList();
 
         return ResponseEntity.ok(new PageImpl<>(boards));
@@ -62,11 +59,8 @@ public class BoardQueryController {
 
     @GetMapping("/status/active-suspended")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Page<BoardDto>> getActiveAndSuspendedBoards(
-            @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
-            @RequestParam(name = "size", defaultValue = "10") int size
-    ) {
-        var boards = boardReadUseCase.getActiveAndSuspendedBoards(pageNumber, size).stream()
+    public ResponseEntity<Page<BoardDto>> getActiveAndSuspendedBoards(Pageable pageable) {
+        var boards = boardReadUseCase.getActiveAndSuspendedBoards(pageable).stream()
                 .map(boardDtoMapper::toDto).toList();
 
         return ResponseEntity.ok(new PageImpl<>(boards));
