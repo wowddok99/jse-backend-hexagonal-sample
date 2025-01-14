@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BoardQueryService implements BoardReadUseCase {
@@ -19,20 +21,20 @@ public class BoardQueryService implements BoardReadUseCase {
     @Override
     @Transactional(readOnly = true)
     public Board getBoard(Long id) {
-        return boardQueryPort.findBoardById(id)
+        return boardQueryPort.findById(id)
                 .orElseThrow(BoardQueryErrorCode.BOARD_NOT_FOUND::defaultException);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Page<Board> getBoards(Pageable pageable) {
-        return boardQueryPort.findBoards(pageable);
+        return boardQueryPort.findAll(pageable);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Board> getBoardsByStatus(BoardStatus status, Pageable pageable) {
-        return boardQueryPort.findBoardsByStatus(status, pageable);
+    public Page<Board> getBoardsByStatus(Pageable pageable, List<BoardStatus> statuses) {
+        return boardQueryPort.findByStatusesList(pageable, statuses);
     }
 
     @Override

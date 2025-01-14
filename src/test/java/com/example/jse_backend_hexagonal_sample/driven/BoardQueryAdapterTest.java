@@ -1,58 +1,58 @@
-package com.example.jse_backend_hexagonal_sample.driven;
-
-import com.example.jse_backend_hexagonal_sample.board.adapter.driven.mapper.BoardEntityMapper;
-import com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence.BoardJpaRepository;
-import com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence.BoardQueryAdapter;
-import com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence.entity.BoardEntity;
-import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
-import com.example.jse_backend_hexagonal_sample.board.application.domain.type.BoardStatus;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
-
-import java.time.Instant;
-import java.util.Optional;
-
-@ExtendWith(MockitoExtension.class)
-public class BoardQueryAdapterTest {
-    @InjectMocks
-    private BoardQueryAdapter boardQueryAdapter;
-    @Mock
-    private BoardJpaRepository boardJpaRepository;
-    @Mock
-    private BoardEntityMapper boardEntityMapper;
-
-    private Board board;
-    private BoardEntity boardEntity;
-
-    @BeforeEach
-    void setUp() {
-        board = Board.builder()
-                .id(1L)
-                .title("제목")
-                .content("내용")
-                .status(BoardStatus.ACTIVE)
-                .createdAt(Instant.now())
-                .updatedAt(Instant.now())
-                .build();
-
-        boardEntity = BoardEntity.builder()
-                .id(1L)
-                .title("제목")
-                .content("내용")
-                .status(BoardStatus.ACTIVE)
-                .createdAt(Instant.now())
-                .updatedAt(Instant.now())
-                .build();
-    }
-
+//package com.example.jse_backend_hexagonal_sample.driven;
+//
+//import com.example.jse_backend_hexagonal_sample.board.adapter.driven.mapper.BoardEntityMapper;
+//import com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence.BoardJpaRepository;
+//import com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence.BoardQueryAdapter;
+//import com.example.jse_backend_hexagonal_sample.board.adapter.driven.persistence.entity.BoardEntity;
+//import com.example.jse_backend_hexagonal_sample.board.application.domain.Board;
+//import com.example.jse_backend_hexagonal_sample.board.application.domain.type.BoardStatus;
+//import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.extension.ExtendWith;
+//import org.mockito.InjectMocks;
+//import org.mockito.Mock;
+//import org.mockito.junit.jupiter.MockitoExtension;
+//
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertTrue;
+//import static org.mockito.Mockito.when;
+//
+//import java.time.Instant;
+//import java.util.Optional;
+//
+//@ExtendWith(MockitoExtension.class)
+//public class BoardQueryAdapterTest {
+//    @InjectMocks
+//    private BoardQueryAdapter boardQueryAdapter;
+//    @Mock
+//    private BoardJpaRepository boardJpaRepository;
+//    @Mock
+//    private BoardEntityMapper boardEntityMapper;
+//
+//    private Board board;
+//    private BoardEntity boardEntity;
+//
+//    @BeforeEach
+//    void setUp() {
+//        board = Board.builder()
+//                .id(1L)
+//                .title("제목")
+//                .content("내용")
+//                .status(BoardStatus.ACTIVE)
+//                .createdAt(Instant.now())
+//                .updatedAt(Instant.now())
+//                .build();
+//
+//        boardEntity = BoardEntity.builder()
+//                .id(1L)
+//                .title("제목")
+//                .content("내용")
+//                .status(BoardStatus.ACTIVE)
+//                .createdAt(Instant.now())
+//                .updatedAt(Instant.now())
+//                .build();
+//    }
+//
 //    @Test
 //    void 단건조회_테스트_게시글존재_케이스() {
 //        // Given
@@ -84,4 +84,4 @@ public class BoardQueryAdapterTest {
 //        // Then
 //        assertTrue(result.isEmpty()); // 결과가 비어 있는지 검증
 //    }
-}
+//}

@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/board")
 @RequiredArgsConstructor
@@ -44,14 +46,13 @@ public class BoardQueryController {
         return ResponseEntity.ok(new PageImpl<>(boards));
     }
 
-    @GetMapping("/status/{status}")
+    @GetMapping("/statuses")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Page<BoardDto>> getBoardsByStatus(
-            @PathVariable("status")
-            BoardStatus status,
-            Pageable pageable
+    public ResponseEntity<Page<BoardDto>> getBoardsByStatusesList(
+            Pageable pageable,
+            @RequestParam List<BoardStatus> statuses
     ) {
-        var boards = boardReadUseCase.getBoardsByStatus(status, pageable).stream()
+        var boards = boardReadUseCase.getBoardsByStatus(pageable, statuses).stream()
                 .map(boardDtoMapper::toDto).toList();
 
         return ResponseEntity.ok(new PageImpl<>(boards));

@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -25,7 +26,7 @@ public class BoardQueryAdapter extends QuerydslRepositorySupport implements Boar
     }
 
     @Override
-    public Optional<Board> findBoardById(Long id) {
+    public Optional<Board> findById(Long id) {
         return boardEntityMapper.toOptionalDomain(
                 getQuerydsl().createQuery()
                         .select(boardEntity)
@@ -38,7 +39,7 @@ public class BoardQueryAdapter extends QuerydslRepositorySupport implements Boar
     }
 
     @Override
-    public Page<Board> findBoards(Pageable pageable) {
+    public Page<Board> findAll(Pageable pageable) {
         // 기본 쿼리 생성
         var query = getQuerydsl().createQuery()
                 .select(boardEntity)
@@ -72,12 +73,12 @@ public class BoardQueryAdapter extends QuerydslRepositorySupport implements Boar
     }
 
     @Override
-    public Page<Board> findBoardsByStatus(BoardStatus status, Pageable pageable) {
+    public Page<Board> findByStatusesList(Pageable pageable, List<BoardStatus> statuses) {
         // 기본 쿼리 생성
         var query = getQuerydsl().createQuery()
                 .select(boardEntity)
                 .from(boardEntity)
-                .where(boardEntity.status.eq(status));
+                .where(boardEntity.status.in(statuses));
 
         // pageable 정렬 조건 적용
         pageable.getSort().forEach(order -> {
