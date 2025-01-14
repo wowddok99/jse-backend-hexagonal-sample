@@ -11,6 +11,6 @@ public interface BoardQueryPort {
     Optional<Board> findBoardById(Long id);
     Page<Board> findBoards(Pageable pageable);
     Page<Board> findBoardsByStatus(BoardStatus status, Pageable pageable);
-    Page<Board> findActiveAndSuspendedBoards(Pageable pageable);
+    Page<Board> findActiveAndSuspendedBoards(int pageNumber, int size);
 
 }
