@@ -59,11 +59,10 @@ public class BoardQueryController {
 
     @GetMapping("/status/active-suspended")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Page<BoardDto>> getActiveAndSuspendedBoards(
-            @RequestParam(name = "pageNumber", defaultValue = "0") int pageNumber,
-            @RequestParam(name = "size", defaultValue = "10") int size
+    public ResponseEntity<Page<BoardDto>> getActiveOrSuspendedBoards(
+            Pageable pageable
     ) {
-        var boards = boardReadUseCase.getActiveAndSuspendedBoards(pageNumber, size).stream()
+        var boards = boardReadUseCase.getActiveOrSuspendedBoards(pageable).stream()
                 .map(boardDtoMapper::toDto).toList();
 
         return ResponseEntity.ok(new PageImpl<>(boards));
