@@ -97,7 +97,7 @@ public class BoardQueryAdapter extends QuerydslRepositorySupport implements Boar
         var totalCount  = getQuerydsl().createQuery()
                 .select(boardEntity.count())
                 .from(boardEntity)
-                .where(boardEntity.status.ne(BoardStatus.REMOVED));
+                .where(boardEntity.status.in(statuses));
 
         return PageableExecutionUtils.getPage(
                 result.stream().map(boardEntityMapper::toDomain).toList(),
@@ -133,7 +133,9 @@ public class BoardQueryAdapter extends QuerydslRepositorySupport implements Boar
         var totalCount  = getQuerydsl().createQuery()
                 .select(boardEntity.count())
                 .from(boardEntity)
-                .where(boardEntity.status.ne(BoardStatus.REMOVED));
+                .where(boardEntity.status.eq(BoardStatus.ACTIVE)
+                        .or(boardEntity.status.eq(BoardStatus.SUSPENDED))
+                );
 
         return PageableExecutionUtils.getPage(
                 result.stream().map(boardEntityMapper::toDomain).toList(),
