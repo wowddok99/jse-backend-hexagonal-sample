@@ -19,7 +19,7 @@ public class BoardQueryAdapter extends QuerydslRepositorySupport implements Boar
     private final BoardEntityMapper boardEntityMapper;
     QBoardEntity boardEntity = QBoardEntity.boardEntity;
 
-    public BoardQueryAdapter(BoardJpaRepository boardJpaRepository, BoardEntityMapper boardEntityMapper) {
+    public BoardQueryAdapter(BoardEntityMapper boardEntityMapper) {
         super(BoardEntity.class);
         this.boardEntityMapper = boardEntityMapper;
     }
